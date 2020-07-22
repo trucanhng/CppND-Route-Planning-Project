@@ -40,9 +40,24 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     neighbor->h_value = CalculateHValue (neighbor);  // Calculate the neighbor's h_value
     neighbor->g_value = current_node->g_value + neighbor->distance (*current_node);  // Calculate the neighbor's g_value
     open_list.push_back (neighbor);   // Add neighbor to the open_list
-    neighbor->visited = true;       // Mark neighbor as visited 
+    neighbor->visited = true;       // Mark neighbor as visited
   }
 
+}
+
+// Compare the sum of the h and g value of 2 nodes
+// Return true if node1's sum > node2's sum
+bool RoutePlanner::Compare (RouteModel::Node *node1, RouteModel::Node *node2)
+{
+  float f1 = node1->g_value + node1->h_value;
+  float f2 = node2->g_value + node2->h_value;
+  return (f1 > f2);
+}
+
+// Sort the open_list in descending order
+void RoutePlanner::Sort (std::vector<RouteModel::Node *> *list)
+{
+  std::sort (list->begin(), list->end(), Compare);
 }
 
 
@@ -54,7 +69,10 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
-
+  Sort (&open_list);
+  RouteModel::Node *next_node = open_list.back();
+  open_list.pop_back();
+  return next_node;
 }
 
 
