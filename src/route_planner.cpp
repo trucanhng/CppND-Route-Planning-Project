@@ -33,14 +33,21 @@ float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 // - For each node in current_node.neighbors, add the neighbor to open_list and set the node's visited attribute to true.
 
 void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
-  current_node->FindNeighbors ();   // Find all neighbors of current node
+  // Find all neighbors of the current node
+  current_node->FindNeighbors ();
+
   for (auto neighbor : current_node->neighbors)
   {// For each neighbor in the current node's neighbor list
-    neighbor->parent = current_node;   // Set the neighbor's parent to the current node
-    neighbor->h_value = CalculateHValue (neighbor);  // Calculate the neighbor's h_value
-    neighbor->g_value = current_node->g_value + neighbor->distance (*current_node);  // Calculate the neighbor's g_value
-    open_list.push_back (neighbor);   // Add neighbor to the open_list
-    neighbor->visited = true;       // Mark neighbor as visited
+    // Set the neighbor's parent to the current node
+    neighbor->parent = current_node;
+    // Calculate the neighbor's h_value
+    neighbor->h_value = CalculateHValue (neighbor);
+    // Calculate the neighbor's g_value
+    neighbor->g_value = current_node->g_value + neighbor->distance (*current_node);
+    // Add neighbor to the open_list
+    open_list.push_back (neighbor);
+    // Mark neighbor as visited
+    neighbor->visited = true;
   }
 
 }
@@ -115,6 +122,21 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
 void RoutePlanner::AStarSearch() {
     RouteModel::Node *current_node = nullptr;
 
-    // TODO: Implement your solution here.
+    // Add start node to open_list
+    open_list.push_back (start_node);
+    start_node->visited = true;
 
+    while (!open_list.empty ())
+    {
+      current_node = NextNode ();
+      if (current_node == end_node)
+      {
+        m_Model.path = ConstructFinalPath (current_node);
+        return;
+      }
+      else
+      {
+        AddNeighbors (current_node);
+      }
+    }
 }
