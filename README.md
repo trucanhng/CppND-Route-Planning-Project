@@ -1,5 +1,9 @@
 # Route Planning Project
 
+This projects creates a route planner that constructs a path between two points on a map using the A* search algorithm.
+The project uses real map data from the [OpenStreetMap project](https://www.openstreetmap.org/#map=5/38.007/-95.844).
+The starting code for this project comes from the GitHub repo [CppND-Route-Planning-Project](https://github.com/udacity/CppND-Route-Planning-Project). 
+
 This repo contains the starter code for the Route Planning project.
 
 <img src="map.png" width="600" height="450" />
@@ -58,4 +62,3 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 ./test
 ```
-
