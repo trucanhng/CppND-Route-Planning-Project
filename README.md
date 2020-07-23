@@ -1,10 +1,11 @@
 # Route Planning Project
 
-This projects creates a route planner that constructs a path between two points on a map using the A* search algorithm.
+This project creates a route planner that constructs a path between two points on a map using the A* search algorithm.
 The project uses real map data from the [OpenStreetMap project](https://www.openstreetmap.org/#map=5/38.007/-95.844).
-The starting code for this project comes from the GitHub repo [CppND-Route-Planning-Project](https://github.com/udacity/CppND-Route-Planning-Project). 
 
-This repo contains the starter code for the Route Planning project.
+The starting code for this project comes from the GitHub repo [CppND-Route-Planning-Project](https://github.com/udacity/CppND-Route-Planning-Project).
+
+My contribution to this project is to implement the A* search algorithm, which can be found in the RoutePlanner class.
 
 <img src="map.png" width="600" height="450" />
 
@@ -12,14 +13,14 @@ This repo contains the starter code for the Route Planning project.
 
 When cloning this project, be sure to use the `--recurse-submodules` flag. Using HTTPS:
 ```
-git clone https://github.com/udacity/CppND-Route-Planning-Project.git --recurse-submodules
+git clone https://github.com/trucanhng/CppND-Route-Planning-Project.git --recurse-submodules
 ```
 or with SSH:
 ```
-git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-submodules
+git clone git@github.com:trucanhng/CppND-Route-Planning-Project.git --recurse-submodules
 ```
 
-## Dependencies for Running Locally
+## Dependencies
 * cmake >= 3.11.3
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1 (Linux, Mac), 3.81 (Windows)
